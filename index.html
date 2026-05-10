@@ -454,10 +454,69 @@
       <p>If your net income for the year exceeds approximately $79,000 (adjusted annually), you may have to repay a portion of your EI benefits at tax time. The clawback rate is 30% of the lesser of: your net income above the threshold or the total EI you received. First-time claimants and those receiving special benefits (maternity, sickness) are generally exempt.</p>
     </section>
 
+    <!-- ── Section 5: How EI Premiums Work ── -->
+    <section class="authority-section" id="how-premiums-work">
+      <div class="section-header">
+        <div class="section-number">5</div>
+        <h2>How EI Premiums Work</h2>
+      </div>
+      <p>EI is funded through premiums paid by both employees and employers on every dollar of insurable earnings, up to the annual maximum. The rates below are sourced directly from the 2026 ESDC announcement and are reflected in the calculator data.</p>
+      <div id="premiums-table"></div>
+      <script>
+        (function () {
+          var C = EI_CONFIG;
+          var empRate = (C.employeeRate * 100).toFixed(2);
+          var erRate = (C.employerRate * 100).toFixed(2);
+          var empMax = "$" + C.maxEmployeeContribution.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          var erMax = "$" + C.maxEmployerContribution.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          var mie = "$" + C.maxInsurableEarnings.toLocaleString("en-CA");
+          document.getElementById("premiums-table").innerHTML =
+            "<table class=\"premiums-tbl\">" +
+            "<thead><tr><th>Party</th><th>Rate (per $100)</th><th>2026 Maximum Contribution</th></tr></thead>" +
+            "<tbody>" +
+            "<tr><td>Employee</td><td>" + empRate + "%</td><td>" + empMax + "</td></tr>" +
+            "<tr><td>Employer</td><td>" + erRate + "%</td><td>" + erMax + "</td></tr>" +
+            "</tbody></table>" +
+            "<p class=\"premiums-note\">Based on 2026 maximum insurable earnings (MIE) of " + mie + ". Employer rate is " + C.employerMultiplier + "&times; the employee rate. " +
+            "Source: <a href=\"https://www.canada.ca/en/employment-social-development/news/2025/09/canada-employment-insurance-commission-sets-the-2026-employment-insurance-premium-rate.html\" target=\"_blank\" rel=\"noopener noreferrer\">ESDC 2026 premium announcement ↗</a>.</p>";
+        })();
+      </script>
+    </section>
+
     <!-- ── Related Calculators ── -->
     <section class="related-section">
       <h2 class="related-heading">Related Canadian Calculators</h2>
       <div id="network-related-calculators" class="related-grid"></div>
+    </section>
+
+    <!-- ── Section 6: Inline FAQ ── -->
+    <section class="authority-section" id="faq-inline">
+      <div class="section-header">
+        <div class="section-number">6</div>
+        <h2>Common EI Questions</h2>
+      </div>
+
+      <div class="faq-item">
+        <h3>I was laid off in Toronto — how many hours do I need?</h3>
+        <p>Toronto is its own EI economic region with a current unemployment rate of 8.1%, which puts it in the 8.1%–9% band. That band requires <strong>595 insurable hours</strong> worked in the 52-week qualifying period before your claim. If you worked 40 hours per week, you need roughly 15 full-time weeks. Enter “Toronto” in the calculator above to confirm the current threshold based on the latest Statistics Canada data.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>I moved provinces — which region applies?</h3>
+        <p>EI eligibility is based on the EI economic region where you <strong>worked</strong>, not where you currently live. If you worked in Vancouver and then moved to Ontario before filing, your qualifying hours and regional threshold are still based on the Vancouver EI region (6.3% unemployment, 665 hours required). What matters is where the insurable employment was performed during your qualifying period.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Does my employer pay EI on my overtime?</h3>
+        <p>Yes. All insurable earnings — including overtime pay, bonuses, and commissions — are subject to EI premiums up to the annual maximum insurable earnings ceiling ($68,900 in 2026). Once your cumulative insurable earnings for the year reach that ceiling, neither you nor your employer owes further premiums. Overtime hours also count toward your total insurable hours for eligibility purposes.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Why do I need more hours than my friend in another province?</h3>
+        <p>The required hours threshold is tied to the unemployment rate in your specific EI economic region — not your province. Regions with lower unemployment rates require more qualifying hours because workers there have had more opportunity to accumulate insurable time. Your friend likely works in a region with a higher unemployment rate, which triggers a lower hours threshold. Use the calculator to look up both regions and compare the exact requirements side by side.</p>
+      </div>
+
+      <p class="faq-more">More detailed questions answered on the <a href="faq.html">full FAQ page →</a></p>
     </section>
 
     <!-- Ad unit — before footer -->
@@ -577,7 +636,8 @@
       regionConfirmed.innerHTML =
         '<span class="rc-check">✓</span> ' +
         '<strong>' + escapeHtml(s.name) + ', ' + escapeHtml(s.province) + '</strong>' +
-        ' — ' + s.rate + '% unemployment · <strong>' + s.requiredHours + ' hours required</strong>';
+        ' — ' + s.rate + '% unemployment · <strong>' + s.requiredHours + ' hours required</strong>' +
+        ' · <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410035401" target="_blank" rel="noopener noreferrer" class="rc-source">StatCan source ↗</a>';
       regionConfirmed.classList.add("visible");
     }
 
