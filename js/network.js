@@ -3,7 +3,6 @@
 /**
  * network.js — EICalc.ca Canadian Calculator Network
  * Renders related tools and footer network links dynamically.
- * Do not hardcode related tool links in HTML.
  * CANADA ONLY — no .com tools, no US references.
  */
 
@@ -12,7 +11,7 @@
 
   const NETWORK = {
     hub: {
-      name: "Calc-HQ Canada",
+      name: "Calc-HQ.ca",
       url: "https://calc-hq.ca",
       description: "Canadian payroll, tax, and contribution calculators",
     },
@@ -102,8 +101,10 @@
         </div>
         <div class="footer-col">
           <h4>More Tools</h4>
-          <a href="${NETWORK.hub.url}" target="_blank" rel="noopener noreferrer">${NETWORK.hub.name}</a>
-          <span class="footer-hub-desc">${NETWORK.hub.description}</span>
+          <a href="${NETWORK.hub.url}" class="more-tools-link" target="_blank" rel="noopener noreferrer">
+            <span class="more-tools-title">${NETWORK.hub.name}</span>
+            <span class="subtext">${NETWORK.hub.description}</span>
+          </a>
         </div>
       </div>
       <div class="footer-bottom">
