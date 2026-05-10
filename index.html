@@ -462,25 +462,6 @@
       </div>
       <p>EI is funded through premiums paid by both employees and employers on every dollar of insurable earnings, up to the annual maximum. The rates below are sourced directly from the 2026 ESDC announcement and are reflected in the calculator data.</p>
       <div id="premiums-table"></div>
-      <script>
-        (function () {
-          var C = EI_CONFIG;
-          var empRate = (C.employeeRate * 100).toFixed(2);
-          var erRate = (C.employerRate * 100).toFixed(2);
-          var empMax = "$" + C.maxEmployeeContribution.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-          var erMax = "$" + C.maxEmployerContribution.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-          var mie = "$" + C.maxInsurableEarnings.toLocaleString("en-CA");
-          document.getElementById("premiums-table").innerHTML =
-            "<table class=\"premiums-tbl\">" +
-            "<thead><tr><th>Party</th><th>Rate (per $100)</th><th>2026 Maximum Contribution</th></tr></thead>" +
-            "<tbody>" +
-            "<tr><td>Employee</td><td>" + empRate + "%</td><td>" + empMax + "</td></tr>" +
-            "<tr><td>Employer</td><td>" + erRate + "%</td><td>" + erMax + "</td></tr>" +
-            "</tbody></table>" +
-            "<p class=\"premiums-note\">Based on 2026 maximum insurable earnings (MIE) of " + mie + ". Employer rate is " + C.employerMultiplier + "&times; the employee rate. " +
-            "Source: <a href=\"https://www.canada.ca/en/employment-social-development/news/2025/09/canada-employment-insurance-commission-sets-the-2026-employment-insurance-premium-rate.html\" target=\"_blank\" rel=\"noopener noreferrer\">ESDC 2026 premium announcement ↗</a>.</p>";
-        })();
-      </script>
     </section>
 
     <!-- ── Related Calculators ── -->
@@ -795,6 +776,25 @@
     document.getElementById("hours-input").addEventListener("keydown", function (e) {
       if (e.key === "Enter") runCalculator();
     });
+
+    // ── EI Premiums table (rendered after EI_CONFIG is available) ─────────────
+    (function () {
+      var C = EI_CONFIG;
+      var empRate = (C.employeeRate * 100).toFixed(2);
+      var erRate = (C.employerRate * 100).toFixed(2);
+      var empMax = "$" + C.maxEmployeeContribution.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      var erMax = "$" + C.maxEmployerContribution.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      var mie = "$" + C.maxInsurableEarnings.toLocaleString("en-CA");
+      document.getElementById("premiums-table").innerHTML =
+        "<table class=\"premiums-tbl\">" +
+        "<thead><tr><th>Party</th><th>Rate (per $100)</th><th>2026 Maximum Contribution</th></tr></thead>" +
+        "<tbody>" +
+        "<tr><td>Employee</td><td>" + empRate + "%</td><td>" + empMax + "</td></tr>" +
+        "<tr><td>Employer</td><td>" + erRate + "%</td><td>" + erMax + "</td></tr>" +
+        "</tbody></table>" +
+        "<p class=\"premiums-note\">Based on 2026 maximum insurable earnings (MIE) of " + mie + ". Employer rate is " + C.employerMultiplier + "&times; the employee rate. " +
+        "Source: <a href=\"https://www.canada.ca/en/employment-social-development/news/2025/09/canada-employment-insurance-commission-sets-the-2026-employment-insurance-premium-rate.html\" target=\"_blank\" rel=\"noopener noreferrer\">ESDC 2026 premium announcement ↗</a>.</p>";
+    })();
 
   })();
   </script>
