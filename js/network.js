@@ -18,15 +18,7 @@
     tools: [
       {
         live: true,
-        name: "Ontario Take Home Calc",
-        url: "https://ontariotakehomecalc.ca",
-        description:
-          "Estimate your Ontario net pay after federal and provincial taxes, CPP, and EI deductions.",
-        tags: ["payroll", "ontario", "tax"],
-      },
-      {
-        live: true,
-        name: "CPP Calculator",
+        name: "CPP Calc",
         url: "https://cppcalc.ca",
         description:
           "Canada Pension Plan contributions based on current rates and income thresholds.",
@@ -81,13 +73,13 @@
     container.innerHTML = `
       <div class="footer-grid">
         <div class="footer-col">
-          <h4>EI Calculator</h4>
+          <h4>EI Calc</h4>
           <p>An Employment Insurance (EI) contribution calculator for Canadian employees. Based on current ESDC rates and the annual MIE ceiling.</p>
           <p class="footer-email">Questions? <a href="mailto:partnerships@calc-hq.ca">partnerships@calc-hq.ca</a></p>
         </div>
         <div class="footer-col">
-          <h4>Pages</h4>
-          <a href="index.html">EI Calculator</a>
+          <h4>PAGES</h4>
+          <a href="index.html">Home</a>
           <a href="faq.html">FAQ</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
@@ -96,11 +88,11 @@
           <a href="disclaimer.html">Disclaimer</a>
         </div>
         <div class="footer-col">
-          <h4>Related Calculators</h4>
+          <h4>RELATED TOOLS</h4>
           ${toolLinks}
         </div>
         <div class="footer-col">
-          <h4>More Tools</h4>
+          <h4>MORE TOOLS</h4>
           <a href="${NETWORK.hub.url}" class="more-tools-link" target="_blank" rel="noopener noreferrer">
             <span class="more-tools-title">${NETWORK.hub.name}</span>
             <span class="subtext">${NETWORK.hub.description}</span>
