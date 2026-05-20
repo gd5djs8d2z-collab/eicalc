@@ -960,7 +960,7 @@ a:hover { color: var(--teal-dark); }
   .hero-badge { font-size: 0.72rem; }
   .header-inner { padding: 0 14px; }
   .site-nav a { padding: 4px 8px; font-size: 0.8rem; }
-  .calc-card { margin: -18px 0 28px; border-radius: var(--radius); }
+  .calc-card { margin: 24px 0 28px; border-radius: var(--radius); }
   .calc-header { padding: 14px 16px; }
   .calc-header h2 { font-size: 0.97rem; }
   .calc-body { padding: 16px 14px 20px; }
