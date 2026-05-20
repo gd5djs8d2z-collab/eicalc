@@ -75,7 +75,6 @@
         <div class="footer-col">
           <h4>EI Calc</h4>
           <p>An Employment Insurance (EI) contribution calculator for Canadian employees. Based on current ESDC rates and the annual MIE ceiling.</p>
-          <p class="footer-email">Questions? <a href="mailto:partnerships@calc-hq.ca">partnerships@calc-hq.ca</a></p>
         </div>
         <div class="footer-col">
           <h4>PAGES</h4>
